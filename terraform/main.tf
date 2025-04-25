@@ -84,7 +84,8 @@ resource "aws_instance" "example" {
 
   key_name      = "your-key-pair-name"  # Replace with your key pair name
   subnet_id     = aws_subnet.subnet_a.id
-  security_groups = [aws_security_group.example_sg.name]
+  vpc_security_group_ids = [aws_security_group.example_sg.id]
+
 
   tags = {
     Name = "ExampleInstance"
