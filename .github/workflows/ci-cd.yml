@@ -25,11 +25,14 @@ jobs:
           terraform_version: '1.0.0'  # You can change tis to any version you prefer
 
       - name: Terraform Init
+        working-directory: terraform
         run: terraform init  # This initializes the Terraform configuration
 
       - name: Terraform Plan
+        working-directory: terraform
         run: terraform plan  # This shows what Terraform will do without applying changes
 
       - name: Terraform Apply
+        working-directory: terraform
         run: terraform apply -auto-approve  # This applies the Terraform configuration automatically
 
