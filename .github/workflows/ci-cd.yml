@@ -30,3 +30,9 @@ jobs:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}   # AWS credentials stored in GitHub secrets
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_DEFAULT_REGION: 'us-east-1'  # You can change this to the region you use
+- name: Set up AWS Credentials
+  uses: aws-actions/configure-aws-credentials@v1
+  with:
+    aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}  # Set this in GitHub Secrets
+    aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}  # Set this in GitHub Secrets
+    aws_region: ${{ secrets.AWS_DEFAULT_REGION }}  # Optional, specify the region like us-east-1
