@@ -13,10 +13,16 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2  # This action checks out your repository's code
 
+      - name: Set up AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws_access_key_id: ${{ secrets.ACCESS_KEY_ID }}  # Set this in GitHub Secrets
+          aws_secret_access_key: ${{ secrets.SECRET_ACCESS_KEY }}  # Set this in GitHub Secrets
+
       - name: Set up Terraform
         uses: hashicorp/setup-terraform@v1  # This sets up Terraform on the GitHub runner
         with:
-          terraform_version: '1.0.0'  # You can change this to any version you prefer
+          terraform_version: '1.0.0'  # You can change tis to any version you prefer
 
       - name: Terraform Init
         run: terraform init  # This initializes the Terraform configuration
@@ -26,13 +32,4 @@ jobs:
 
       - name: Terraform Apply
         run: terraform apply -auto-approve  # This applies the Terraform configuration automatically
-        env:
-          AWS_ACCESS_KEY_ID: ${{ ACCESS_KEY_ID }}   # AWS credentials stored in GitHub secrets
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.SECRET_ACCESS_KEY }}
-          AWS_DEFAULT_REGION: 'us-east-1'  # You can change this to the region you use
-- name: Set up AWS Credentials
-  uses: aws-actions/configure-aws-credentials@v1
-  with:
-    aws_access_key_id: ${{ secrets.ACCESS_KEY_ID }}  # Set this in GitHub Secrets
-    aws_secret_access_key: ${{ secrets.SECRET_ACCESS_KEY }}  # Set this in GitHub Secrets
-    aws_region: ${{ secrets.AWS_DEFAULT_REGION }}  # Optional, specify the region like us-east-1
+
