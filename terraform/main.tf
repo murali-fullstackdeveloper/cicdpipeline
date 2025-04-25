@@ -82,7 +82,7 @@ resource "aws_instance" "example" {
   ami           = "ami-0e449927258d45bc4"  # Ensure this is a valid AMI ID for your region
   instance_type = var.instance_type      # Reference the instance_type variable
 
-  key_name      = "your-key-pair-name"  # Replace with your key pair name
+  key_name      = "task1"  # Replace with your key pair name
   subnet_id     = aws_subnet.subnet_a.id
   vpc_security_group_ids = [aws_security_group.example_sg.id]
 
