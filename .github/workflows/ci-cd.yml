@@ -18,7 +18,7 @@ jobs:
         with:
           aws_access_key_id: ${{ secrets.ACCESS_KEY_ID }}  # Set this in GitHub Secrets
           aws_secret_access_key: ${{ secrets.SECRET_ACCESS_KEY }}  # Set this in GitHub Secrets
-          aws_region: "us-east-1"
+          aws_region: us-east-1
       - name: Set up Terraform
         uses: hashicorp/setup-terraform@v1  # This sets up Terraform on the GitHub runner
         with:
